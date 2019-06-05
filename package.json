@@ -1,0 +1,23 @@
+{
+  "name": "simplify-img-compressor",
+  "version": "1.0.0",
+  "description": "图片压缩",
+  "main": "imgCompressor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acccccccb/img-compressor.git"
+  },
+  "keywords": [
+    "image",
+    "compressor"
+  ],
+  "author": "acccccccb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acccccccb/img-compressor/issues"
+  },
+  "homepage": "https://github.com/acccccccb/img-compressor#readme"
+}
