@@ -15,7 +15,7 @@
 - file：图片文件
 - maxImgLength：图片最大长度
 - quality：压缩质量
-- 
+
 #### 返回参数：
 - name：文件名称
 - maxImgLength：图片最大长度
