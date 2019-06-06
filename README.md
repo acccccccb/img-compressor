@@ -7,7 +7,7 @@
 	import $imgCompressor from 'simplify-img-compressor'
 	
 #### 压缩
-	imgCompressor.(file[,maxImgLength,quality]).then((res)=>{
+	$imgCompressor.(file[,maxImgLength,quality]).then((res)=>{
         // Do something
     });
 	
