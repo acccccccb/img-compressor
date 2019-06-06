@@ -1,23 +1,16 @@
-// 图片压缩
-//import { imgCompressor } from '/path/to/imgCompressor'
-//@params
-//file:文件
-//maxImgLength:图片最大边长，如超出将被缩放至此长度，默认值：1200
-//quality:图片压缩质量，0-1，默认0.6
-//imgCompressor.img(file[,maxImgLength,quality]).then((res)=>{
-//  Do something
-//  console.log(res);
-//});
-export let imgCompressor =  {
-  img:function(file,maxLength,quality){
+export default function(file,maxLength,quality){
+  if(!file || typeof file != 'object' || !file.type || file.type.indexOf('image')<0) {
+    return new Promise((resolve,reject)=>{
+      resolve(new Error('simplify-img-compressor:必须传入图片类型的文件对象'));
+    });
+  } else {
     let maxImgLength = maxLength?maxLength:1200;// 最长边的长度最大值
     let qua = quality?quality:0.6;// 压缩质量
     let reader = new FileReader();
     let compressImg = new Image();
-    reader.readAsDataURL(file.raw);
-    return new Promise((resolve) => {
+    reader.readAsDataURL(file);
+    return new Promise((resolve,reject) => {
       reader.onload = function(e) {
-        // 图片base64化
         let newUrl = e.target.result;
         let c = document.createElement('canvas');
         let img = document.createElement('img');
@@ -50,10 +43,14 @@ export let imgCompressor =  {
             compressImg = c.toBlob(function(blob){
               resolve({
                 file:blob,
-                name:file.name
+                name:file.name,
+                quality:qua,
+                maxImgLength:maxImgLength,
+                afterCompressorSize:(blob.size/1024).toFixed(2) + 'kb',
+                beforeCompressorSize:(file.size/1024).toFixed(2) + 'kb',
+                dataURL:c.toDataURL(),
               });
-              console.log((file.size/1024).toFixed(2)+'kb => ' + (blob.size/1024).toFixed(2) + 'kb');
-            },file.raw.type,qua);
+            },file.type,qua);
           }
         },200);
       };
