@@ -1,4 +1,4 @@
-# img-compressor
+# simplify-img-compressor
 图片压缩
 ### 使用方法
     npm install simplify-img-compressor --save-dev
